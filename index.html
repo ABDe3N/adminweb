@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3aref - إدارة الأسئلة</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Fixed Navbar -->
+        <nav class="fixed-navbar">
+            <div class="navbar-content">
+                <div class="navbar-left">
+                    <h1 class="logo">معارف - إدارة الأسئلة</h1>
+                </div>
+                
+                <div class="navbar-center">
+                    <div class="search-navbar">
+                        <input type="text" id="searchInput" placeholder="ابحث في الأسئلة أو الأرقام..." class="navbar-search">
+                    </div>
+                </div>
+
+                <div class="navbar-right">
+                    <div class="navbar-actions">
+                        <button id="addQuestionBtn" class="btn btn-success">
+                            <span class="icon">➕</span>
+                            إضافة سؤال
+                        </button>
+                        <button id="saveBtn" class="btn btn-success">
+                            <span class="icon">💾</span>
+                            حفظ
+                        </button>
+                        <button id="importBtn" class="btn btn-primary">
+                            <span class="icon">📁</span>
+                            استيراد ملف JSON
+                        </button>
+                        <button id="appendBtn" class="btn btn-primary">
+                            <span class="icon">➕</span>
+                            إلحاق ملف JSON
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Secondary Stats Navbar -->
+        <nav class="stats-navbar">
+            <div class="stats-navbar-content">
+                <div class="stats-inline">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalQuestions">0</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalCategories">0</div>
+                        <div class="stat-label">إجمالي الفئات</div>
+                    </div>
+                    <div class="stat-item filtered-results">
+                        <div class="stat-number" id="filteredCount">0</div>
+                        <div class="stat-label">النتائج المعروضة</div>
+                    </div>
+                </div>
+                
+                <div class="filters-inline">
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <label for="categoryFilter">الفئة:</label>
+                        <select id="categoryFilter">
+                            <option value="">جميع الفئات</option>
+                        </select>
+                    </div>
+
+                    <!-- Difficulty Filter -->
+                    <div class="filter-group">
+                        <label for="difficultyFilter">مستوى الصعوبة:</label>
+                        <select id="difficultyFilter">
+                            <option value="">جميع المستويات</option>
+                            <!-- Options will be populated dynamically with counts -->
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Questions List -->
+        <section class="questions-section">
+            <div class="questions-header">
+                <h2>قائمة الأسئلة</h2>
+                <div class="pagination-info">
+                    <span id="paginationInfo">عرض 0 من 0 سؤال</span>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here -->
+            </div>
+            
+            <!-- Removed pagination - single page listing -->
+        </section>
+    </div>
+
+    <!-- Modal removed - using inline editing -->
+
+    <!-- File Input for Import -->
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+    
+    <!-- File Input for Append -->
+    <input type="file" id="appendFileInput" accept=".json" style="display: none;">
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>جارٍ التحميل...</p>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
